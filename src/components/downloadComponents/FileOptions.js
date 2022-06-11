@@ -1,6 +1,8 @@
 import {useState} from "react";
 import axios from "axios";
 
+import RequestStatusChangeForm from "./RequestStatusChangeForm";
+
 export default function FileOptions(props) {
     const [requestFormExpanded, setRequestFormExpanded] = useState(false);
 
@@ -21,7 +23,7 @@ export default function FileOptions(props) {
         })
     }
     const handleRequestFormExpansion = () => {
-        requestFormExpanded ? setRequestFormExpanded(true): setRequestFormExpanded(false);
+        requestFormExpanded ? setRequestFormExpanded(false): setRequestFormExpanded(true);
     }
 
     if(!props.fileData.isBlocked) {
@@ -31,12 +33,17 @@ export default function FileOptions(props) {
             <hr/>
             <p>Du meinst, diese Datei verletzt das Urheberrecht? Beantrage hier die Blockierung: </p>
             <button onClick={handleRequestFormExpansion}>Blockierung beantragen</button>
+            <RequestStatusChangeForm isExpanded = {requestFormExpanded} fileData = {props.fileData} fileId={props.fileId} blockFile = {true}/>
         </div>
-    }
-    if(requestFormExpanded) {
-        return(<div>
-
-        </div>);
+    } else {
+        return <div>
+            <h1>Datei-Optionen</h1>
+            <p>Die Datei ist leider gesperrt, weil sie als urheberrechtsverletzend eingestuft wurde.</p>
+            <hr/>
+            <p>Du meinst, dies ist ein Fehler und die Datei sollte freigegeben werden? Beantrage hier die Entsperrung: </p>
+            <button onClick={handleRequestFormExpansion}>Entsperrung beantragen</button>
+            <RequestStatusChangeForm isExpanded = {requestFormExpanded} fileData = {props.fileData} fileId={props.fileId} blockFile = {false}/>
+        </div>
     }
 
 }
