@@ -62,14 +62,14 @@ export default function Download() {
 
     if(fileFound) { // wenn Datei mit angegebener fileId gefunden wurde
         return(<div>
-            <h1>Download: {retrievedFileData.fileName}</h1>
+            <h1>Download: {decodeURIComponent(escape(retrievedFileData.fileName))}</h1>
             <div>
                 <h2>Datei-Informationen</h2>
                 <table>
                     <tbody>
                     <tr>
                         <td>Dateiname: </td>
-                        <td>{retrievedFileData.fileName}</td>
+                        <td>{decodeURIComponent(escape(retrievedFileData.fileName))}</td>
                     </tr>
                     <tr>
                         <td>Dateigröße: </td>
