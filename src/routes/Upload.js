@@ -54,7 +54,7 @@ export default function Upload() {
                 <h1>Upload</h1>
                 <form onSubmit={handleFileUpload}>
                     <label>
-                        Bitte wählen Sie eine Datei zum Upload aus (10MiB max.): 
+                        Bitte wählen Sie eine Datei zum Upload aus (10MiB max.):
                         <input type="file" ref={fileInput}/>
                     </label>
                     <button type="submit">Submit</button>
