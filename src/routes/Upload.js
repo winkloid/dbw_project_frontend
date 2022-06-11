@@ -4,7 +4,7 @@ import axios from "axios";
 import UploadedFileUrl from "../components/uploadComponents/UploadedFileUrl";
 
 export default function Upload() {
-    const uploadUrl = "http://localhost:49749/api/files/uploadFile";
+    const uploadUrl = process.env.REACT_APP_BACKEND_BASE_URL + "/api/files/uploadFile";
 
     const [isUploading, setIsUploading] = useState(false);
     const [uploadSuccess, setUploadSuccess] = useState(false);
@@ -35,7 +35,6 @@ export default function Upload() {
             if(uploadResponse.status === 200) {
                 setDownloadUrl(uploadResponse.data.fileUrl);
                 setUploadSuccess(true);
-                alert("Erfolg - Datei verfügbar unter: " + uploadResponse.data.fileUrl);
             } else {
                 alert("Fehler beim Upload");
             }
@@ -55,7 +54,7 @@ export default function Upload() {
                 <h1>Upload</h1>
                 <form onSubmit={handleFileUpload}>
                     <label>
-                        Bitte wählen Sie eine Datei zum Upload aus:
+                        Bitte wählen Sie eine Datei zum Upload aus (10MiB max.): 
                         <input type="file" ref={fileInput}/>
                     </label>
                     <button type="submit">Submit</button>
