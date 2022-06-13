@@ -63,38 +63,50 @@ export default function Download() {
     if(fileFound) { // wenn Datei mit angegebener fileId gefunden wurde
         return(<div>
             <h1>Download: {decodeURIComponent(escape(retrievedFileData.fileName))}</h1>
-            <div>
-                <h2>Datei-Informationen</h2>
-                <table>
+            <div className="container">
+            <div className="card">
+                <h2 className="card-header bg-primary text-white">Datei-Informationen</h2>
+                <div className="table-responsive ">
+                <table className="card-body table table-striped-columns">
                     <tbody>
                     <tr>
-                        <td>Dateiname: </td>
+                        <th className="col-3">Dateiname: </th>
                         <td>{decodeURIComponent(escape(retrievedFileData.fileName))}</td>
                     </tr>
                     <tr>
-                        <td>Dateigröße: </td>
+                        <th className="col-3">Dateigröße: </th>
                         <td>{humanReadableSize(retrievedFileData.fileSize)}</td>
                     </tr>
                     <tr>
-                        <td>Hochgeladen am: </td>
+                        <th className="col-3">Hochgeladen am: </th>
                         <td>{(new Date(retrievedFileData.uploadDate)).toLocaleDateString() + " um " + (new Date(retrievedFileData.uploadDate)).toLocaleTimeString()}</td>
                     </tr>
                     <tr>
-                        <td>Zuletzt heruntergeladen: </td>
+                        <th className="col-3">Zuletzt heruntergeladen: </th>
                         <td>{(new Date(retrievedFileData.lastUsedDate)).toLocaleDateString() + " um " + (new Date(retrievedFileData.lastUsedDate)).toLocaleTimeString()}</td>
                     </tr>
                     <tr>
-                        <td>SHA256-Hash: </td>
+                        <th className="col-3">SHA256-Hash: </th>
                         <td>{retrievedFileData.sha256Hash}</td>
                     </tr>
                     </tbody>
                 </table>
+                </div>
             </div>
+            <br />
             <FileOptions fileData={retrievedFileData} fileId={params.fileId}/>
+            </div>
         </div>);
     } else if(!fileFound && !isInternalError) { // wenn Datei nur nicht gefunden
-        return(<div>
-            <p>File not found.</p>
+        return(
+        <div className="card bg-danger">
+            <div className="card-header">
+                <h1 className="text-white">404</h1>
+            </div>
+            <div className="card-body">
+                <h2 className="card-title text-black">Datei nicht gefunden</h2>
+                <p className="card-text text-white">Die Datei mit der von Ihnen angegebenen Datei-ID wurde nicht gefunden.</p>
+            </div>
         </div>);
     } else { // wenn ein anderweitiger Fehler auftrat
         return(<div></div>);

@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^13.5.0",
     "a11y-react-emoji": "^1.2.0",
     "axios": "^0.27.2",
+    "bootstrap": "^5.2.0-beta1",
     "dotenv-webpack": "^7.1.0",
     "FormData": "^0.10.1",
     "react": "^18.1.0",
