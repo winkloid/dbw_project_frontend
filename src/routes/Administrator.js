@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 
 import StatusChangeRequest from "../components/administratorComponents/StatusChangeRequest";
+import StatusChangeRequestInformation from "../components/administratorComponents/StatusChangeRequestInformation";
 
 export default function Administrator() {
     const [requestOverview, setRequestOverview] = useState([]);
@@ -35,7 +36,7 @@ export default function Administrator() {
 
     // dient dazu, eine Request der Request-Overview als ausgewählt zu setzen
     const handleEntrySelection = (entryIndex) => {
-        setSelectedEntry(entryIndex);
+        setSelectedEntry(requestOverview[entryIndex]);
         setIsEntrySelected(true);
     }
 
@@ -69,7 +70,7 @@ export default function Administrator() {
         );
     } else if(retrievedOverviewData && isEntrySelected) {
         return(
-            <h1>Details:</h1>
+            <StatusChangeRequestInformation entry={selectedEntry} />
         );
     } else {
         return(
