@@ -33,7 +33,7 @@ export default function Upload() {
 
             setIsUploading(false);
             if(uploadResponse.status === 200) {
-                setDownloadUrl(uploadResponse.data.fileUrl);
+                setDownloadUrl(process.env.REACT_APP_FRONTEND_BASE_URL + "/download/" + uploadResponse.data.fileUrl);
                 setUploadSuccess(true);
             } else {
                 alert("Fehler beim Upload");
