@@ -12,14 +12,18 @@ export default function FileOptions(props) {
             url: process.env.REACT_APP_BACKEND_BASE_URL + "/api/files/downloadFileViaId/" + props.fileId,
             responseType: "blob"
         }).then((downloadedFileResponse) => {
+            // Temporären, nicht hotlink-fähigen Downloadlink erstellen, unter Zuhilfenahme von https://akashmittal.com/react-download-files-button-click/
             let downloadFile = document.createElement("a");
             downloadFile.href = window.URL.createObjectURL(downloadedFileResponse.data);
             downloadFile.download = decodeURIComponent(escape(props.fileData.fileName));
-            document.body.appendChild(downloadFile);
+            document.getElementById('root').appendChild(downloadFile);
             downloadFile.click();
             setTimeout(() => {
                 window.URL.revokeObjectURL(downloadFile);
             }, 1000);
+            //--
+        }).catch((error) => {
+            alert("Fehler beim Herunterladen der Datei. Möglicherweise wurde die Datei in der Zwischenzeit gelöscht oder blockiert. Bitte laden Sie die Seite neu.");
         })
     }
     const handleRequestFormExpansion = () => {
