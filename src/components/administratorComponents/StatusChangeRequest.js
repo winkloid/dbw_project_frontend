@@ -12,12 +12,12 @@ export default function StatusChangeRequest(props) {
     
     return(
         <tr>
-            <td>{props.requestIndex}</td>
+            <th>{props.requestIndex}</th>
             <td>{(new Date(props.requestData.requestDate)).toLocaleDateString()}</td>
             <td>{(new Date(props.requestData.requestDate)).toLocaleTimeString()}</td>
             <td>{decodeURIComponent(escape(props.requestData.fileName))}</td>
             <td>{blockEmoji(props.requestData.blockFile)}</td>
-            <td><button onClick={() => props.handleEntrySelection(props.requestIndex)}>Details</button></td>
+            <td><button class="btn bg-primary text-white" onClick={() => props.handleEntrySelection(props.requestIndex)}>Details</button></td>
         </tr>
     );
 }

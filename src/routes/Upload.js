@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import axios from "axios";
 
 import UploadedFileUrl from "../components/uploadComponents/UploadedFileUrl";
@@ -14,9 +14,9 @@ export default function Upload() {
 
     const handleFileUpload = async (submitted) => {
         submitted.preventDefault();
-        if(!fileInput.current.files[0]) {
+        if (!fileInput.current.files[0]) {
             alert("Fehler! Sie haben keine Datei zum Upload ausgewählt.");
-        } else if(fileInput.current.files[0].size > 10485760) {
+        } else if (fileInput.current.files[0].size > 10485760) {
             alert("Fehler! Die ausgewählte Datei ist zu groß. Es sind maximal 10 MiB pro hochzuladender Datei erlaubt.");
         } else {
             let fileUploadForm = new FormData();
@@ -28,11 +28,11 @@ export default function Upload() {
                 method: "post",
                 url: uploadUrl,
                 data: fileUploadForm,
-                headers: {"Content-Type": "multipart/form-data"},
-            }).then((response) => {return response}).catch((error) => {return error.response});
+                headers: { "Content-Type": "multipart/form-data" },
+            }).then((response) => { return response }).catch((error) => { return error.response });
 
             setIsUploading(false);
-            if(uploadResponse.status === 200) {
+            if (uploadResponse.status === 200) {
                 setDownloadUrl(process.env.REACT_APP_FRONTEND_BASE_URL + "/download/" + uploadResponse.data.fileUrl);
                 setUploadSuccess(true);
             } else {
@@ -41,24 +41,31 @@ export default function Upload() {
         }
 
     }
-    if(isUploading) {
+    if (isUploading) {
         return <div>
             <h1>Lade hoch...</h1>
         </div>
-    } else if(uploadSuccess) {
+    } else if (uploadSuccess) {
         return <UploadedFileUrl fileDownloadUrl={downloadUrl} />
 
     } else {
         return (
             <div>
-                <h1>Upload</h1>
-                <form onSubmit={handleFileUpload}>
-                    <label>
-                        Bitte wählen Sie eine Datei zum Upload aus (10MiB max.):
-                        <input type="file" ref={fileInput}/>
-                    </label>
-                    <button type="submit">Submit</button>
-                </form>
+                <h1>Eine Datei hochladen</h1>
+                <div className="container">
+                    <div className="card">
+                        <h2 className="card-header bg-primary text-white">Upload</h2>
+                        <div className="card-body">
+                            <p className="card-text">Auf dieser Seite können Sie eine Datei hochladen. Anschließend erhalten Sie eine URL, über die diese Datei später beliebig oft heruntergeladen werden kann. Achten Sie darauf, kein urheberrechtlich geschütztes Material ohne Zustimmung des Urhebers hochzuladen.</p>
+                            <form onSubmit={handleFileUpload}>
+                                <label for="inputGroupFile04" class="form-label"> Bitte wählen Sie eine Datei zum Upload aus (10MiB max.):</label>
+                                <input type="file" ref={fileInput} className="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Hochladen" />
+                                <br />
+                                <button class="btn btn-primary col-12" id="inputGroupFileAddon04" type="submit">Hochladen</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     }
