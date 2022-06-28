@@ -1,4 +1,3 @@
-//import Emoji from "a11y-react-emoji";
 
 export default function StatusChangeRequest(props) {
     const blockEmoji = (blockFile) => {

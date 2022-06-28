@@ -47,7 +47,6 @@ export default function Upload() {
         </div>
     } else if (uploadSuccess) {
         return <UploadedFileUrl fileDownloadUrl={downloadUrl} />
-
     } else {
         return (
             <div>
@@ -58,10 +57,10 @@ export default function Upload() {
                         <div className="card-body">
                             <p className="card-text">Auf dieser Seite können Sie eine Datei hochladen. Anschließend erhalten Sie eine URL, über die diese Datei später beliebig oft heruntergeladen werden kann. Achten Sie darauf, kein urheberrechtlich geschütztes Material ohne Zustimmung des Urhebers hochzuladen.</p>
                             <form onSubmit={handleFileUpload}>
-                                <label for="inputGroupFile04" class="form-label"> Bitte wählen Sie eine Datei zum Upload aus (10MiB max.):</label>
+                                <label htmlFor="inputGroupFile04" className="form-label"> Bitte wählen Sie eine Datei zum Upload aus (10MiB max.):</label>
                                 <input type="file" ref={fileInput} className="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Hochladen" />
                                 <br />
-                                <button class="btn btn-primary col-12" id="inputGroupFileAddon04" type="submit">Hochladen</button>
+                                <button className="btn btn-primary col-12" id="inputGroupFileAddon04" type="submit">Hochladen</button>
                             </form>
                         </div>
                     </div>
