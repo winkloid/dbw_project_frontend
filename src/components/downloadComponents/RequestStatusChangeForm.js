@@ -16,6 +16,7 @@ export default function RequestStatusChangeForm(props) {
     }
 
     const handleMessageSubmission = async () => {
+        setSendingRequest(true);
         setSendingRequestFailed(true);
         let response = await axios({
             method: "post",
@@ -27,12 +28,14 @@ export default function RequestStatusChangeForm(props) {
         }).then((requestSubmissionResponse) => {
             setRequestSent(true);
             setSendingRequestFailed(false);
+            setSendingRequest(false);
             return requestSubmissionResponse;
         }).catch((error) => {
             setSendingRequestFailed(true);
+            setSendingRequest(false);
             return error.response;
         });
-        setSendingRequestFailed(false);
+        setSendingRequest(false);
     }
 
     if (props.isExpanded && !requestSent) {
