@@ -17,7 +17,6 @@ export default function RequestStatusChangeForm(props) {
 
     const handleMessageSubmission = async () => {
         setSendingRequest(true);
-        setSendingRequestFailed(true);
         let response = await axios({
             method: "post",
             url: process.env.REACT_APP_BACKEND_BASE_URL + "/api/files/requestBlockingStatusChange/" + props.fileId,
