@@ -6,8 +6,10 @@ import SendingStatusChangeFailed from "./SendingStatusChangeFailed";
 export default function StatusChangeRequestInformation(props) {
     const [isSent, setIsSent] = useState(false);
     const [sendingFailed, setSendingFailed] = useState(false);
+    const [sendingDecision, setSendingDecision] = useState(false);
 
     const acceptRequest = async () => {
+        setSendingDecision(true);
         let acceptRequestResponse = await axios({
             method: "delete",
             url: process.env.REACT_APP_BACKEND_BASE_URL + "/api/files/acceptBlockingStatusChangeRequest/" + props.entry._id,
@@ -20,9 +22,11 @@ export default function StatusChangeRequestInformation(props) {
             setSendingFailed(true);
             return error.response;
         });
+        setSendingDecision(false);
     }
 
     const declineRequest = async () => {
+        setSendingDecision(true);
         let declineRequestResponse = await axios({
             method: "delete",
             url: process.env.REACT_APP_BACKEND_BASE_URL + "/api/files/declineBlockingStatusChangeRequest/" + props.entry._id,
@@ -35,6 +39,7 @@ export default function StatusChangeRequestInformation(props) {
             setSendingFailed(true);
             return error.response;
         });
+        setSendingDecision(false);
     }
 
     const humanReadableSize = (byteSize) => {
@@ -113,14 +118,14 @@ export default function StatusChangeRequestInformation(props) {
                                 <h3 className="card-header">Anfrage annehmen</h3>
                                 <div className="card-body">
                                     <p className="card-text">Wenn Sie eine Anfrage annehmen, wird der Blockierungs-Status der Datei entsprechend geändert, diese Anfrage und auch alle weiteren Anfragen zu Dateien mit diesem SHA256-Hash aus dem System gelöscht.</p>
-                                    <button className="btn btn-primary col-12" onClick={acceptRequest}>Anfrage annehmen</button>
+                                    <button className={sendingDecision ? "btn bg-secondary text-gray" : "btn btn-primary col-12"} disabled={sendingDecision} onClick={acceptRequest}>{sendingDecision? "Sende Daten, bitte warten..." : "Anfrage annehmen"}</button>
                                 </div>
                             </div>
                             <div className="card bg-warning col-md col-12 m-2">
                                 <h3 className="card-header">Anfrage ablehnen</h3>
                                 <div className="card-body">
                                     <p className="card-text">Wenn Sie die Anfrage ablehnen, wird der Blockierungs-Status der Datei nicht verändert. Die abgelehnte Anfrage wird zudem aus dem System gelöscht.</p>
-                                    <button className="btn btn-danger col-12" onClick={declineRequest}>Anfrage ablehnen</button>
+                                    <button className={sendingDecision ? "btn bg-secondary text-gray" : "btn btn-danger col-12"} disabled={sendingDecision} onClick={declineRequest}>{sendingDecision? "Sende Daten, bitte warten..." : "Anfrage ablehnen"}</button>
                                 </div>
                             </div>
                             </div>
