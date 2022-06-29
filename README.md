@@ -1,70 +1,34 @@
-# Getting Started with Create React App
+# Installationsanleitung
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+In dieser Datei finden Sie eine kurze Anleitung, um den Frontend-Teil der Projektlösung auszuführen.
 
-## Available Scripts
+Stellen Sie zuvor sicher, dass die neueste Version von NPM auf Ihrem Gerät installiert ist.
 
-In the project directory, you can run
+## 1. Installation der Dependencies
 
-### `npm start`
+Alle Dependencies der Projektlösung sind in dbw_project_frontend/package.json aufgeführt. Um diese automatisch durch den NPM installieren zu lassen, navigieren Sie zunächst in den Projektordner des Frontend-Teils der Projektlösung. Hierzu können Sie unter Windows beispielsweise Windows PowerShell verwenden:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Öffnen Sie ein Terminalfenster
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Navigieren Sie mithilfe des cd-Befehls in das "dbw_project_frontend"-Verzeichnis, z.B.:
 
-### `npm test`
+  - ```
+    cd C:\Users\MaxMustermann\Downloads\dbw_project_frontend
+    ```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Führen Sie in diesem Verzeichnis über Ihr Terminal nun den folgenden Befehl aus:
 
-### `npm run build`
+  - ```
+    npm install
+    ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Sie sollten nun ein neues Verzeichnis "node_modules" innerhalb des "dbw_project_frontend"-Verzeichnisses sehen, in dem die Dateien der notwendigen Dependencies enthalten sind.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Zum Schluss starten Sie den Frontend-Teil der Projektlösung über Ihr Terminal (immer noch im "dbw_project_frontend"-Verzeichnis befindlich) über folgenden Befehl:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  - ```
+    npm start
+    ```
 
-### `npm run eject`
+- Nach Komplettierung des darüber ausgelösten Vorgangs sollte der Frontend-Teil der Anwendung über http://localhost:3000 auf Ihrem Gerät erreichbar sein. Wenn Sie ihn wieder beenden möchten, schließen Sie entweder das entsprechende Terminalfenster oder drücken Sie STRG + C und bestätigen das Ende der Ausführung.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
