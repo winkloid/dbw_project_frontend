@@ -2,7 +2,21 @@
 
 In dieser Datei finden Sie eine kurze Anleitung, um den Frontend-Teil der Projektlösung auszuführen.
 
-Stellen Sie zuvor sicher, dass die neueste Version von NPM auf Ihrem Gerät installiert ist.
+Stellen Sie zuvor sicher, dass eine aktuelle Version von NPM und Node.js auf Ihrem Gerät installiert sind.
+
+- Sie können die Installation von Node.JS in einem Terminalfenster mit folgendem Befehl prüfen:
+
+  - ```
+    node --version
+    ```
+
+- Sie können die Installation von NPM (Node Package Manager) in einem Terminalfenster mit folgendem Befehl prüfen:
+
+  - ```
+    npm --version
+    ```
+
+- sollten Node.js oder NPM nicht installiert sein, so können Sie beide Softwares über folgenden Link beziehen: https://nodejs.org/de/download/
 
 ## 1. Installation der Dependencies
 
